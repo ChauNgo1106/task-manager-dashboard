@@ -3,9 +3,11 @@ import mockData from "./data/tasks.json";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import FilterBar from "./components/FilterBar";
+import SearchBar from "./components/SearchBar";
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     setTasks(mockData);
@@ -33,14 +35,17 @@ const App = () => {
       filter === "all" ||
       (filter === "completed" && task.completed) ||
       (filter === "incompleted" && !task.completed);
-
-    return matchesFilter;
+    const matchesSearch = task.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    return matchesFilter && matchesSearch;
   });
 
   return (
     <div>
       <h1>Task Manager Dashboard</h1>
       <TaskForm onAdd={addTask} />
+      <SearchBar onSearch={setSearchTerm} />
       <FilterBar currentfilter={filter} onFilterChange={setFilter} />
       <TaskList tasks={filteredTasks} onToggle={handleOnToggle} />
     </div>

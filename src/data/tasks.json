@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Buy groceries",
-    "completed": false,
+    "completed": true,
     "createdAt": "2025-08-25T10:00:00Z"
   },
   {
@@ -10,5 +10,17 @@
     "title": "Finish React project",
     "completed": true,
     "createdAt": "2025-08-24T15:30:00Z"
+  },
+  {
+    "id": 3,
+    "title": "Finish homework",
+    "completed": false,
+    "createdAt": "2025-08-25T15:00:00Z"
+  },
+  {
+    "id": 4,
+    "title": "Running",
+    "completed": false,
+    "createdAt": "2025-08-25T17:30:00Z"
   }
 ]
