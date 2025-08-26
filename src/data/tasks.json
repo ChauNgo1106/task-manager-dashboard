@@ -2,13 +2,13 @@
   {
     "id": 1,
     "title": "Buy groceries",
-    "completed": false,
+    "status": false,
     "createdAt": "2025-08-25T10:00:00Z"
   },
   {
     "id": 2,
     "title": "Finish React project",
-    "completed": true,
+    "status": true,
     "createdAt": "2025-08-24T15:30:00Z"
   }
 ]
