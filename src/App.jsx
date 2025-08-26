@@ -15,7 +15,7 @@ const App = () => {
     const newTask = {
       id: Date.now(),
       title,
-      status: false,
+      completed: false,
       createdAt: new Date().toISOString(),
     };
     setTasks([newTask, ...tasks]);
@@ -24,15 +24,15 @@ const App = () => {
   const handleOnToggle = (id) => {
     setTasks(
       tasks.map((task) =>
-        task.id === id ? { ...task, status: !task.status } : task
+        task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
   };
   const filteredTasks = tasks.filter((task) => {
     const matchesFilter =
       filter === "all" ||
-      (filter === "completed" && task.status) ||
-      (filter === "incompleted" && !task.status);
+      (filter === "completed" && task.completed) ||
+      (filter === "incompleted" && !task.completed);
 
     return matchesFilter;
   });

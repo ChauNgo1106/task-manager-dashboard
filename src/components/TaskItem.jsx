@@ -3,10 +3,12 @@ function TaskItem({ task, onToggle }) {
     <li>
       <input
         type="checkbox"
-        checked={task.status}
+        checked={task.completed}
         onChange={() => onToggle(task.id)}
       />
-      <span style={{ textDecoration: task.status ? "line-through" : "none" }}>
+      <span
+        style={{ textDecoration: task.completed ? "line-through" : "none" }}
+      >
         {task.title}
       </span>
       {task.createdAt}
