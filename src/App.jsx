@@ -17,11 +17,19 @@ const App = () => {
     };
     setTasks([newTask, ...tasks]);
   };
+
+  const handleOnToggle = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, status: !task.status } : task
+      )
+    );
+  };
   return (
     <div>
       <h1>Task Manager Dashboard</h1>
       <TaskForm onAdd={addTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onToggle={handleOnToggle} />
     </div>
   );
 };

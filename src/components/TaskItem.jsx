@@ -1,10 +1,13 @@
-function TaskItem({ task }) {
+function TaskItem({ task, onToggle }) {
   return (
-    <div>
-      <li>
-        {task.title} {task.status ? "Complete" : "Incomplete"} {task.createdAt}
-      </li>
-    </div>
+    <li>
+      <input
+        type="checkbox"
+        checked={task.status}
+        onChange={() => onToggle(task.id)}
+      />
+      {task.title} {task.createdAt}
+    </li>
   );
 }
 export default TaskItem;
