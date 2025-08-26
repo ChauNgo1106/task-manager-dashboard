@@ -9,9 +9,8 @@ function TaskItem({ task, onToggle }) {
       <span
         style={{ textDecoration: task.completed ? "line-through" : "none" }}
       >
-        {task.title}{" "}
+        {task.title} {task.createdAt}
       </span>
-      {task.createdAt}
     </li>
   );
 }
