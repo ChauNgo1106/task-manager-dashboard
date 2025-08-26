@@ -6,7 +6,10 @@ function TaskItem({ task, onToggle }) {
         checked={task.status}
         onChange={() => onToggle(task.id)}
       />
-      {task.title} {task.createdAt}
+      <span style={{ textDecoration: task.status ? "line-through" : "none" }}>
+        {task.title}
+      </span>
+      {task.createdAt}
     </li>
   );
 }

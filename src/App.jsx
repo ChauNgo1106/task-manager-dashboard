@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import mockData from "./data/tasks.json";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
+import FilterBar from "./components/FilterBar";
 const App = () => {
   const [tasks, setTasks] = useState([]);
+  const [filter, setFilter] = useState("all");
+
   useEffect(() => {
     setTasks(mockData);
   }, []);
@@ -25,11 +28,21 @@ const App = () => {
       )
     );
   };
+  const filteredTasks = tasks.filter((task) => {
+    const matchesFilter =
+      filter === "all" ||
+      (filter === "completed" && task.status) ||
+      (filter === "incompleted" && !task.status);
+
+    return matchesFilter;
+  });
+
   return (
     <div>
       <h1>Task Manager Dashboard</h1>
       <TaskForm onAdd={addTask} />
-      <TaskList tasks={tasks} onToggle={handleOnToggle} />
+      <FilterBar currentfilter={filter} onFilterChange={setFilter} />
+      <TaskList tasks={filteredTasks} onToggle={handleOnToggle} />
     </div>
   );
 };
