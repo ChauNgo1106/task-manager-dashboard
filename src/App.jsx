@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import mockData from "./data/tasks.json";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
@@ -11,9 +11,10 @@ const App = () => {
   const [filter, setFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [dateSortingAsc, setDateSortingAsc] = useState(false);
+  const [sortedKey, setSortedKey] = useState("createdAt");
 
   useEffect(() => {
-    setTasks(sortTasksByDate(mockData));
+    setTasks(mockData);
   }, []);
 
   const addTask = (title, dueDate) => {
@@ -48,24 +49,36 @@ const App = () => {
     return matchesFilter && matchesSearch;
   });
 
-  const sortTasksByDate = (tasks, ascending = true) => {
-    return [...tasks].sort((a, b) => {
-      const dateA = new Date(a.createdAt);
-      const dateB = new Date(b.createdAt);
-      return ascending ? dateA - dateB : dateB - dateA;
-    });
+  const sortTasks = (tasks, ascending = true) => {
+    if (sortedKey === "createdAt") {
+      return [...tasks].sort((a, b) => {
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
+        return ascending ? dateA - dateB : dateB - dateA;
+      });
+    } else if (sortedKey === "dueDate") {
+      return [...tasks].sort((a, b) => {
+        const dateA = new Date(a.dueDate);
+        const dateB = new Date(b.dueDate);
+        return ascending ? dateA - dateB : dateB - dateA;
+      });
+    }
   };
 
   const handleSorting = () => {
     setDateSortingAsc((dateSortingAsc) => !dateSortingAsc);
-    setTasks((tasks) => sortTasksByDate(tasks, dateSortingAsc));
+    setTasks((tasks) => sortTasks(tasks, dateSortingAsc));
   };
   return (
     <div className="container">
       <h1>Task Manager Dashboard</h1>
       <TaskForm onAdd={addTask} />
       <SearchBar onSearch={setSearchTerm} />
-      <SortingBar handleSorting={handleSorting} />
+      <SortingBar
+        handleSorting={handleSorting}
+        sortedKey={sortedKey}
+        setSortedKey={setSortedKey}
+      />
       <TaskList tasks={filteredTasks} onToggle={handleOnToggle} />
       <FilterBar currentfilter={filter} onFilterChange={setFilter} />
     </div>
