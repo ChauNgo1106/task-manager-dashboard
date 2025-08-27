@@ -14,7 +14,8 @@ const App = () => {
   const [sortedKey, setSortedKey] = useState("createdAt");
 
   useEffect(() => {
-    setTasks(sortTasks(mockData));
+    setTasks((tasks) => sortTasks(mockData));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addTask = (title, dueDate) => {
@@ -27,7 +28,7 @@ const App = () => {
         ? new Date(dueDate).toISOString()
         : new Date().toISOString(),
     };
-    setTasks([newTask, ...tasks]);
+    setTasks(sortTasks([newTask, ...tasks]));
   };
 
   const handleOnToggle = (id) => {
