@@ -14,7 +14,7 @@ const App = () => {
   const [sortedKey, setSortedKey] = useState("createdAt");
 
   useEffect(() => {
-    setTasks(mockData);
+    setTasks(sortTasks(mockData));
   }, []);
 
   const addTask = (title, dueDate) => {
