@@ -42,7 +42,8 @@ You may also see any lint errors in the console.
 - Update status
   - Checkbox to indicate if task is completed (crossed out)
 - Filters:
-  - Buttons to filter tasks: All, Completed, Incomplete
+  - Buttons to be clcked to filter tasks: All, Completed, Incomplete.
+  - By default, all tasks will be shown.
 - Sorting:
   - By default, tasks will be sorted by Creation Date, ascending order
   - Choose from a value (either sort by Creation Date or Due date not both) and click "↑↓" button to change ascending order or descending order
