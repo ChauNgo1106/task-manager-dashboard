@@ -1,5 +1,5 @@
 import TaskItem from "./TaskItem";
-
+import "../styles/TaskList.css";
 function TaskList({ tasks, onToggle }) {
   return (
     <ul>

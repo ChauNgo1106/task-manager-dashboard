@@ -4,6 +4,7 @@ import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import FilterBar from "./components/FilterBar";
 import SearchBar from "./components/SearchBar";
+import "./App.css";
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
@@ -42,12 +43,12 @@ const App = () => {
   });
 
   return (
-    <div>
+    <div className="container">
       <h1>Task Manager Dashboard</h1>
       <TaskForm onAdd={addTask} />
       <SearchBar onSearch={setSearchTerm} />
-      <FilterBar currentfilter={filter} onFilterChange={setFilter} />
       <TaskList tasks={filteredTasks} onToggle={handleOnToggle} />
+      <FilterBar currentfilter={filter} onFilterChange={setFilter} />
     </div>
   );
 };

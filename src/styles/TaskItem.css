@@ -1,0 +1,26 @@
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+span {
+  flex: 1;
+  font-size: 16px;
+}
+
+span.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+small {
+  color: #666;
+  font-size: 12px;
+}

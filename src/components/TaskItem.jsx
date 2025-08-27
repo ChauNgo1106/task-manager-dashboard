@@ -1,3 +1,4 @@
+import "../styles/TaskItem.css";
 function TaskItem({ task, onToggle }) {
   return (
     <li>

@@ -1,13 +1,10 @@
+import "../styles/FilterBar.css";
 function FilterBar({ currentFilter, onFilterChange }) {
   const filters = ["all", "completed", "incompleted"];
   return (
     <div>
       {filters.map((f) => (
-        <button
-          key={f}
-          onClick={() => onFilterChange(f)}
-          style={{ fontWeight: currentFilter === f ? "bold" : "normal" }}
-        >
+        <button key={f} onClick={() => onFilterChange(f)}>
           {f.charAt(0).toUpperCase() + f.slice(1)}
         </button>
       ))}
