@@ -10,7 +10,13 @@ function TaskItem({ task, onToggle }) {
       <span
         style={{ textDecoration: task.completed ? "line-through" : "none" }}
       >
-        {task.title} {task.createdAt}
+        {task.title}{" "}
+      </span>
+      <span>
+        <small> Created: {new Date(task.createdAt).toLocaleDateString()}</small>
+      </span>
+      <span>
+        <small> Due: {new Date(task.dueDate).toLocaleDateString()}</small>
       </span>
     </li>
   );
